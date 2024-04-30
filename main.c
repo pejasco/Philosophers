@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/04/30 19:16:23 by siev             ###   ########.fr       */
+/*   Created: 2024/04/30 19:05:56 by siev              #+#    #+#             */
+/*   Updated: 2024/04/30 19:14:21 by siev             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-#define PHILO_H
+#include "philo.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h> 
-#include <pthread.h>
-#include <sys/time.h>
-#include <sys/types.h>
-
-typedef struct s_philo
+int main(int ac, char **argv)
 {
-    int 
+    if (ac == 4 || ac == 5)
+    {
+        
 
 
-
-
+    }
+    return (0);   
 }
-
-
-
-
-#endif
