@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 19:05:56 by siev              #+#    #+#             */
-/*   Updated: 2024/05/01 23:44:29 by chuleung         ###   ########.fr       */
+/*   Created: 2024/05/01 16:46:49 by chuleung          #+#    #+#             */
+/*   Updated: 2024/05/01 19:16:54 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <unistd.h>
-#include <stdio.h>
 
-int main(int ac, char **av)
+int	ft_atoi(const char *arr)
 {
-	t_input inputs;
+	int	i;
+	int		sign;
+	int		res;
 
-	if (ac == 5 || ac == 6)
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (ft_isspace(arr[i]))
+		i++;
+	if (arr[i] == '-')
 	{
-		input_check(ac, av, &inputs);
-		printf("%d\n", inputs.no_of_philos);
-		printf("%d\n", inputs.time_to_die);
-		printf("%d\n", inputs.time_to_eat);
-		printf("%d\n", inputs.time_to_sleep);
-		printf("%d\n", inputs.no_of_meals);
-		return (0);
+		sign = -1;
+		i++;
 	}
-	write(2, "Error - Invalid amount of arguments!!! 😪", 28);
-	return (1);
+	else if (arr[1] == '+')
+		i++;
+	while (ft_isdigit(arr[i]))
+	{
+		res = res * 10 + (arr[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }
