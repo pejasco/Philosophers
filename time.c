@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/02 22:17:07 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 22:20:36 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ long	get_time(void)
 		return (0);
 	return ((tv.tv_sec * (long)1000) + (tv.tv_usec / 1000));
 }
+
+int		main()
+{
+	printf(get_timeofday()
+
+}
+
 
 //time_to_die = time_to_eat + time_to_sleep + 10
 //time_to_die = time_to_eat * 2 + time_to_sleep + 10
