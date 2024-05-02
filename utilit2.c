@@ -6,14 +6,14 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/01 22:07:24 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 22:06:25 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h> //printf
 #include <stdlib.h> //exit failure
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int		len;
 
@@ -24,4 +24,3 @@ int ft_strlen(char *str)
 		len++;
 	return (len);
 }
-
