@@ -6,30 +6,30 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:46:49 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/01 19:16:54 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:55:48 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *arr)
+long	ft_atol(const char *arr)
 {
-	int	i;
+	int		i;
 	int		sign;
-	int		res;
+	long	res;
 
 	i = 0;
 	sign = 1;
 	res = 0;
 	while (ft_isspace(arr[i]))
 		i++;
-	if (arr[i] == '-')
+	if (arr[i] == '-' || arr[i] == '+')
 	{
-		sign = -1;
+		if (arr[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	else if (arr[1] == '+')
-		i++;
+	i = 0;
 	while (ft_isdigit(arr[i]))
 	{
 		res = res * 10 + (arr[i] - '0');

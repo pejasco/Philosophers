@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:56 by siev              #+#    #+#             */
-/*   Updated: 2024/05/01 23:44:29 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:14:34 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int main(int ac, char **av)
 	{
 		input_check(ac, av, &inputs);
 		printf("%d\n", inputs.no_of_philos);
-		printf("%d\n", inputs.time_to_die);
-		printf("%d\n", inputs.time_to_eat);
-		printf("%d\n", inputs.time_to_sleep);
-		printf("%d\n", inputs.no_of_meals);
+		printf("%ld\n", inputs.time_to_die);
+		printf("%ld\n", inputs.time_to_eat);
+		printf("%ld\n", inputs.time_to_sleep);
+		printf("%ld\n", inputs.no_of_meals);
 		return (0);
 	}
-	write(2, "Error - Invalid amount of arguments!!! 😪", 28);
+	write(2, "Error - Invalid amount of arguments!!! 😪", 44);
 	return (1);
 }

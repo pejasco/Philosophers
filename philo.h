@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/01 23:09:32 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:14:48 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef pthread_mutex_t	t_mutex;
 typedef struct s_input
 {
 	int		no_of_philos;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		no_of_meals;
+	long	time_to_die;
+	long	time_to_eat;
+	long	time_to_sleep;
+	long	no_of_meals;
 } t_input;
 
 typedef struct s_fork
@@ -62,10 +62,10 @@ typedef	struct s_feast
 } t_feast*/
 
 //atoi
-int		ft_atoi(const char *arr);
+long	ft_atol(const char *arr);
 
 //input
-void input_check(int ac, char **av, t_input *inputs);
+void 	input_check(int ac, char **av, t_input *inputs);
 
 //utili1
 int 	ft_isover_intmax(char *str);

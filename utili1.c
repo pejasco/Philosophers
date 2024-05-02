@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:56:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/01 23:10:06 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:55 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int ft_isdigit(int c)
 
 int ft_isspace(int c)
 {
-	return (((c >= '\t' && c <= 'r') || c == ' '));
+	return ((c >= '\t' && c <= '\r') || c == ' ');
 }
 
 void	error_exit(const char *error)
