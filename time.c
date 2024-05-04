@@ -6,37 +6,30 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/02 22:20:36 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:50:59 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/time.h>
+#include <unistd.h>
 
-long	get_time(void)
+long	time_since_epoch(void)
 {
-	struct timeval	tv;
+	struct timeval		time;
+	long				milliseconds;
 
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (long)1000) + (tv.tv_usec / 1000));
+	gettimeofday(&time, NULL);
+	milliseconds = time.tv_sec * 1000L + time.tv_usec / 1000L; 
+	return (milliseconds);
 }
 
-int		main()
+long	get_time_since(long start_time)
 {
-	printf(get_timeofday()
+	long	current_time;
 
+	current_time = time_since_epoch();
+	return (current_time - start_time);
 }
-
-
-//time_to_die = time_to_eat + time_to_sleep + 10
-//time_to_die = time_to_eat * 2 + time_to_sleep + 10
-
-/*
-synchronization
-1. odd sleep(time_to_eat /2)
-2. odd start taking from rigt fork
-3. all pilosopers take from right fork, except for the last one.
-
-
-*/
