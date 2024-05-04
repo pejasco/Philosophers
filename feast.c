@@ -6,11 +6,12 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:26 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/04 17:52:56 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:28:43 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include "stdbool.h"
 
 void	*actions_centre()
 {
@@ -52,7 +53,7 @@ int		thread_handle(int nbr_of_thread, t_feast *feast, pthread_mutex_t *mutex)
 {
 	pthread_t	*threads;
 
-	threads = malloc(sizeof(pthread_t) * (nbr_of_thread + 5));
+	threads = malloc(sizeof(pthread_t) * (nbr_of_thread + 1));
 	pthread_mutex_init(mutex, NULL);
 
 
@@ -64,12 +65,24 @@ int		thread_handle(int nbr_of_thread, t_feast *feast, pthread_mutex_t *mutex)
 
 int		feast_init(t_feast *feast, pthread_mutex_t	*mutex)
 {
-	feast->data->start_time = time_since_epoch;
-	feast->philos = malloc(sizeof(t_philo) * (feast->inputs->no_of_philos));
-	feast->forks = malloc(sizeof(t_fork) * (feast->inputs->no_of_philos));
-	while 
+	int	no_of_philos;
+	int	i;
 
-	
+	no_of_philos = feast->inputs->no_of_philos;
+	feast->data->start_time = time_since_epoch;
+	feast->philos = malloc(sizeof(t_philo) * no_of_philos);
+	feast->forks = malloc(sizeof(t_fork) * feast->inputs->no_of_philos);
+	feast->threads = malloc(sizeof(pthread_t) * (no_of_philos + 1));
+	i = 0;
+	while (i < no_of_philos)
+	{
+
+
+		i++;
+	}
+
+
+
 
 
 
