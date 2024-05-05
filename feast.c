@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:26 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/04 18:28:43 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/05 01:17:36 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,85 @@ int		thread_handle(int nbr_of_thread, t_feast *feast, pthread_mutex_t *mutex)
 	
 }
 
-int		feast_init(t_feast *feast, pthread_mutex_t	*mutex)
+void	fork_init(t_feast *feast)
 {
-	int	no_of_philos;
-	int	i;
+	long	no_of_philos;
+	int		i;
+
+	i = 0;
+	no_of_philos = feast->inputs->no_of_philos;
+	while (i < no_of_philos)
+	{
+		feast->forks[i].fork_id = i + 1;
+		feast->forks[i].held_by_who = 0;
+		pthread_mutex_init(&feast->forks[i].fork_mutex, NULL);
+	}
+}
+
+void	init_fork_to_philo(t_feast *feast)
+{
+	long	no_of_philos;
+	int		i;
+	t_philo	*philos;
+
+	i = 0;
+	no_of_philos = feast->inputs->no_of_philos;
+	philos = feast->philos;	
+	while (i < no_of_philos)
+	{
+		if (i == 0)
+			philos[i].right_fork = &feast->forks[no_of_philos - 1].fork_id;
+		else
+			philos[i].right_fork = &feast->forks[i - 1].fork_id;
+		if (i == (no_of_philos -1))
+			philos[i].left_fork = &feast->forks[0].fork_id;
+		else
+			philos[i].left_fork = &feast->forks[i + 1].fork_id;
+		i++;
+	}
+}
+
+void	philos_mutex_init(t_feast *feast, int i)
+{
+	t_philo *philo = &feast->philos[i];
+	pthread_mutex_init(&(philo->last_meal_start_time_mutex), NULL);
+	pthread_mutex_init(&(philo->eat_count_mutex), NULL);
+	pthread_mutex_init(&(philo->parity_mutex), NULL);
+	pthread_mutex_init(&(philo->life_mutex), NULL);
+	pthread_mutex_init(&(philo->full_mutex), NULL);
+	pthread_mutex_init(&(philo->status_mutex), NULL);
+}
+
+
+void	philos_init(t_feast *feast)
+{
+	long	no_of_philos;
+	int		i;
+	t_philo	*philos;
+	long	*start_time;
+
+	i = 0;
+	start_time = &(feast->data->start_time);
+	no_of_philos = feast->inputs->no_of_philos;
+	philos = feast->philos;	
+	init_fork_to_philo(feast);
+	while (i < no_of_philos)
+	{
+		philos[i].philo_id = i + 1;
+		feast->philos[i].last_meal_start_time = *start_time;
+		feast->philos[i].eat_count = 0;
+		feast->philos[i].parity = check_parity(philos[i].philo_id);
+		feast->philos[i].life = ALIVE;
+		feast->philos[i].full = FULL;
+		feast->philos[i].status = START;
+		philos_mutex_init(feast, i);
+		i++;
+	}
+}
+
+int		feast_init(t_feast *feast)
+{
+	long	no_of_philos;
 
 	no_of_philos = feast->inputs->no_of_philos;
 	feast->data->start_time = time_since_epoch;

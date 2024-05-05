@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/04 17:50:09 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:45:26 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ typedef enum e_life
 	DEAD,
 } t_life;
 
+typedef enum e_full
+{
+	FULL,
+	NOT_FULL,
+} t_full;
+
 typedef enum e_status
 {
+	START,
 	EAT,
 	THINK,
 	SLEEP,
@@ -77,7 +84,7 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	long		id;
+	long		philo_id;
 	t_fork		*left_fork;
 	t_fork		*right_fork;
 	long		last_meal_start_time;
@@ -88,7 +95,10 @@ typedef struct s_philo
 	t_mutex		parity_mutex;
 	t_life		life;
 	t_mutex		life_mutex;
+	t_full		full;
+	t_full		full_mutex;
 	t_status	status;
+	t_status	status_mutex;
 }	t_philo;
 
 typedef struct s_feast
@@ -117,7 +127,8 @@ int		ft_isspace(int c);
 void	error_exit(const char *error);
 
 //utili2
-int		ft_strlen(char *str);
+t_parity	check_parity(int no_of_philos);
+int			ft_strlen(char *str);
 
 //feast
 int		feast_init(t_feast *feast, pthread_mutex_t	*mutex);

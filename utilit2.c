@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/04 18:25:10 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:37:22 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h> //exit failure
 #include <stdbool.h> //bool
 
-t_parity	check_parity(int no_of_philos)
+t_parity	check_parity(int philo_id)
 {
 	if (no_of_philos % 2 == 0)
 		return (EVEN);
