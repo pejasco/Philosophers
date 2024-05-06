@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   utilit2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/06 19:08:11 by chuleung         ###   ########.fr       */
+/*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
+/*   Updated: 2024/05/06 12:28:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <stdio.h> //printf
+#include <stdlib.h> //exit failure
+#include <stdbool.h> //bool
 
-long	time_since_epoch(void)
+t_parity	check_parity(int philo_id)
 {
-	struct timeval		time;
-	long				milliseconds;
-
-	gettimeofday(&time, NULL);
-	milliseconds = time.tv_sec * 1000L + time.tv_usec / 1000L; 
-	return (milliseconds);
+	if (philo_id % 2 == 0)
+		return (EVEN);
+	else
+		return (ODD);	
 }
 
-long	get_time_since(long start_time)
+int		ft_strlen(char *str)
 {
-	long	current_time;
+	int		len;
 
-	current_time = time_since_epoch();
-	return (current_time - start_time);
+	len = 0;
+	if (str == NULL)
+		return (-1);
+	while (str[len])
+		len++;
+	return (len);
 }

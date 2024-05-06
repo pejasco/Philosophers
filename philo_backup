@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo_backup                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/06 23:22:11 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:15:36 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,21 @@ typedef struct s_input
 	long	no_of_meals;
 }	t_input;
 
-typedef	struct	s_feast_data
+typedef	struct	s_data
 {
-	long		start_time;
-	bool		end_sim;
-	bool		all_threads_ready;
-	long		threads_running_nbr;
-	bool		all_philo_alive;
-	bool		all_full;
-	bool		no_of_philos_is_even;
-	t_mutex		feast_data_mutex;
-	t_mutex		msg_mutex;
+	long	start_time;
+	bool	all_philo_alive;
+	t_mutex	all_philo_alive_mutex;
+	bool	all_full;
+	t_mutex	all_full_mutex;
+	bool	no_of_philos_is_even;
 	//t_mutex	msg_mutex;
-} t_feast_data;
+} t_data;
 
 typedef struct s_fork
 {
 	long		fork_id;
+	long		held_by_who;
 	t_mutex		fork_mutex;
 }	t_fork;
 
@@ -109,60 +107,49 @@ typedef struct s_philo
 	t_fork		*right_fork;
 	t_fork		*left_fork;
 	long		last_meal_start_time;
+	t_mutex		last_meal_start_time_mutex;
 	long		eat_count;
+	t_mutex		eat_count_mutex;
 	t_parity	parity;
+	t_mutex		parity_mutex;
 	t_life		life;
+	t_mutex		life_mutex;
 	t_full		full;
+	t_full		full_mutex;
 	t_status	status;
-	pthread_t	thread_id;
-	t_mutex		philo_mutex;
+	t_status	status_mutex;
 }	t_philo;
 
 typedef struct s_feast
 {
-	t_input			*inputs;
-	t_philo			*philos;
-	t_fork			*forks;
-	t_feast_data	*feast_data;
-	pthread_t		sexy_waitress;
-
+	t_input		*inputs;
+	t_philo		*philos;
+	t_fork		*forks;
+	t_data		*data;
+	pthread_t	threads;
 }	t_feast;
 
 //atoi
-long		ft_atol(const char *arr);
+long	ft_atol(const char *arr);
 
 //input
-void		input_check(int ac, char **av, t_feast *feast);
+void	input_check(int ac, char **av, t_feast *feast);
 
 //time
-long		time_since_epoch(void);
-long		get_time_since(long start_time);
+long	time_since_epoch(void);
+long	get_time_since(long start_time);
 
 //utili1
-int			ft_isover_intmax(char *str);
-int			ft_isdigit(int c);
-int			ft_isspace(int c);
-void		error_exit(const char *error);
+int		ft_isover_intmax(char *str);
+int		ft_isdigit(int c);
+int		ft_isspace(int c);
+void	error_exit(const char *error);
 
 //utili2
 t_parity	check_parity(int no_of_philos);
 int			ft_strlen(char *str);
 
 //feast
-int			feast_init(t_feast *feast, pthread_mutex_t	*mutex);
-
-//mal_mtx
-void	*malloc_hanlde(size_t bytes);
-void	mutex_hanlde(t_mutex *mutex, t_op op);
-void	thread_hanlde(pthread_t *thread, void *(*f)(void *),
-		void *data, t_op op);
-
-//write_n_read
-void	write_bool(t_mutex *mutex, bool *dst, bool val);
-bool	read_bool(t_mutex *mutex, bool *val);
-void	write_long(t_mutex *mutex, long *dst, bool val);
-long	read_long(t_mutex *mutex, long *val);
-
-
+int		feast_init(t_feast *feast, pthread_mutex_t	*mutex);
 
 #endif
