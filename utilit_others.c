@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilit2.c                                          :+:      :+:    :+:   */
+/*   utilit_others.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/06 12:28:20 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:40:22 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <stdlib.h> //exit failure
 #include <stdbool.h> //bool
 
-t_parity	check_parity(int philo_id)
+t_parity	check_parity(int nbr)
 {
-	if (philo_id % 2 == 0)
+	if (nbr % 2 == 0)
 		return (EVEN);
 	else
 		return (ODD);	

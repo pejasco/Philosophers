@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:56 by siev              #+#    #+#             */
-/*   Updated: 2024/05/04 18:08:37 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:07:32 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	{
 		input_check(ac, av, &feast);
 		feast_setup(&feast);
+		feast_start(&)
 		return (0);
 	}
 	write(2, "Error - Invalid amount of arguments!!! 😪", 44);

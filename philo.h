@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/06 23:22:11 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:38:45 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef	struct	s_feast_data
 	long		threads_running_nbr;
 	bool		all_philo_alive;
 	bool		all_full;
-	bool		no_of_philos_is_even;
+	bool		no_of_philos_parity;
 	t_mutex		feast_data_mutex;
 	t_mutex		msg_mutex;
 	//t_mutex	msg_mutex;
@@ -105,17 +105,18 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	long		philo_id;
-	t_fork		*right_fork;
-	t_fork		*left_fork;
-	long		last_meal_start_time;
-	long		eat_count;
-	t_parity	parity;
-	t_life		life;
-	t_full		full;
-	t_status	status;
-	pthread_t	thread_id;
-	t_mutex		philo_mutex;
+	long			philo_id;
+	t_fork			*first_fork;
+	t_fork			*second_fork;
+	long			last_meal_start_time;
+	long			eat_count;
+	t_parity		parity;
+	t_life			life;
+	t_full			full;
+	t_status		status;
+	pthread_t		thread_id;
+	t_feast_data	*feast_data;
+	t_mutex			philo_mutex;
 }	t_philo;
 
 typedef struct s_feast
@@ -149,7 +150,7 @@ t_parity	check_parity(int no_of_philos);
 int			ft_strlen(char *str);
 
 //feast
-int			feast_init(t_feast *feast, pthread_mutex_t	*mutex);
+void	philos_taking_seat(t_feast *feast, t_philo *philos);
 
 //mal_mtx
 void	*malloc_hanlde(size_t bytes);
