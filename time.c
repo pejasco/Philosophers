@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/07 21:06:51 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:07:47 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,23 @@ long	get_time_since(long start_time)
 	return (current_time - start_time);
 }
 
-void	better_usleep(long usec, t_table *table)
+void	fucking_sleep(long sleep_usec, t_feast_data *data)
 {
-	long	start;
-	long	elapsed;
-	long	rem;
+	long	start_time;
+	long	time_passed;
+	long	diff;
 
-	start = gettime(MICROSECOND);
-	while (gettime(MICROSECOND) - start < usec)
+	start_time = time_since_epoch();
+	while (get_time_since(start_time) < sleep_usec)
 	{
-		if (simulation_finished(table))
+		if (sim_finished(data))
 			break ;
-		elapsed = gettime(MICROSECOND) - start;
-		rem = usec - elapsed;
-		if (rem > 1e4)
-			usleep(rem / 2);
+		time_passed = get_time_since(start_time);
+		diff = sleep_usec - time_passed;
+		if (diff > 1e4)
+			usleep(diff/ 2);
 		else
-			while (gettime(MICROSECOND) - start < usec)
+			while (time_since_epoch() - start_time < sleep_usec)
 				;
 	}
 }

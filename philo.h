@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/07 18:38:45 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:07:22 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,14 @@ typedef enum e_life
 	DEAD,
 } t_life;
 
-typedef enum e_full
-{
-	FULL,
-	NOT_FULL,
-} t_full;
 
 typedef enum e_status
 {
 	EAT,
 	THINK,
 	SLEEP,
-	TAKE_RF,
-	TAKE_LF,
+	TAKE_1st_Fork,
+	TAKE_2nd_Fork,
 	DIE,
 } t_status;
 
@@ -90,11 +85,12 @@ typedef	struct	s_feast_data
 	bool		all_threads_ready;
 	long		threads_running_nbr;
 	bool		all_philo_alive;
-	bool		all_full;
+	//bool		all_full;
 	bool		no_of_philos_parity;
+	t_input		*input;
+	t_philo		*philo;
 	t_mutex		feast_data_mutex;
 	t_mutex		msg_mutex;
-	//t_mutex	msg_mutex;
 } t_feast_data;
 
 typedef struct s_fork
@@ -112,7 +108,7 @@ typedef struct s_philo
 	long			eat_count;
 	t_parity		parity;
 	t_life			life;
-	t_full			full;
+	bool			full;
 	t_status		status;
 	pthread_t		thread_id;
 	t_feast_data	*feast_data;
@@ -125,7 +121,7 @@ typedef struct s_feast
 	t_philo			*philos;
 	t_fork			*forks;
 	t_feast_data	*feast_data;
-	pthread_t		sexy_waitress;
+	pthread_t		hot_waitress;
 
 }	t_feast;
 
@@ -138,6 +134,7 @@ void		input_check(int ac, char **av, t_feast *feast);
 //time
 long		time_since_epoch(void);
 long		get_time_since(long start_time);
+void		fucking_sleep(long sleep_usec, t_feast_data *data);
 
 //utili1
 int			ft_isover_intmax(char *str);
@@ -151,18 +148,30 @@ int			ft_strlen(char *str);
 
 //feast
 void	philos_taking_seat(t_feast *feast, t_philo *philos);
+void	whose_forks(t_philo *philo, t_feast *feast, long philo_post);
+void	feast_setup(t_feast *feast);
 
 //mal_mtx
-void	*malloc_hanlde(size_t bytes);
-void	mutex_hanlde(t_mutex *mutex, t_op op);
-void	thread_hanlde(pthread_t *thread, void *(*f)(void *),
-		void *data, t_op op);
+void		*malloc_hanlde(size_t bytes);
+void		mutex_hanlde(t_mutex *mutex, t_op op);
+void		thread_hanlde(pthread_t *thread, void *(*f)(void *),
+				void *data, t_op op);
 
 //write_n_read
-void	write_bool(t_mutex *mutex, bool *dst, bool val);
-bool	read_bool(t_mutex *mutex, bool *val);
-void	write_long(t_mutex *mutex, long *dst, bool val);
-long	read_long(t_mutex *mutex, long *val);
+void		write_bool(t_mutex *mutex, bool *dst, bool val);
+bool		read_bool(t_mutex *mutex, bool *val);
+void		write_long(t_mutex *mutex, long *dst, bool val);
+long		read_long(t_mutex *mutex, long *val);
+
+//sync
+void		incr_long(t_mutex *mutex, long *val);
+void		all_threads_created(t_feast_data *feast_data);
+bool		all_threads_running(t_mutex *mutex, long *total_running_threads,
+				long *no_of_philos);
+bool		sim_ended(t_feast_data *data);
+void		avoid_having_two_stright_meal(t_feast_data *data, t_philo *philo);
+
+
 
 
 
