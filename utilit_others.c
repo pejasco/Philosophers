@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/07 18:40:22 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/09 22:09:10 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,22 @@ int		ft_strlen(char *str)
 	while (str[len])
 		len++;
 	return (len);
+}
+
+void	clean_all(t_feast *feast)
+{
+	t_philo		*philo;
+	int			i;
+
+	i = 0;
+	while (i < feast->inputs->no_of_philos)
+	{
+		philo = feast->philos + i;
+		mutex_handle(&philo->philo_mutex, DESTROY);
+		i++;
+	}
+	mutex_handle(&feast->msg_mutex, DESTROY);
+	mutex_handle(&feast->msg_mutex, DESTROY);
+	free(feast->forks);
+	free(feast->philos);
 }

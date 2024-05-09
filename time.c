@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/08 11:07:47 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:28:17 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ long	get_time_since(long start_time)
 	return (current_time - start_time);
 }
 
-void	fucking_sleep(long sleep_usec, t_feast_data *data)
+void		sleep_well(long sleep_usec, t_feast *feast)
 {
 	long	start_time;
 	long	time_passed;
@@ -43,7 +43,7 @@ void	fucking_sleep(long sleep_usec, t_feast_data *data)
 	start_time = time_since_epoch();
 	while (get_time_since(start_time) < sleep_usec)
 	{
-		if (sim_finished(data))
+		if (sim_ended(feast))
 			break ;
 		time_passed = get_time_since(start_time);
 		diff = sleep_usec - time_passed;
@@ -54,4 +54,3 @@ void	fucking_sleep(long sleep_usec, t_feast_data *data)
 				;
 	}
 }
-
