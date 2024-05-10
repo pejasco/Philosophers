@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 11:22:43 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/03 23:32:50 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:20:09 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int	check_args(char *arg)
 {
 	long			nbr;
 	int				i;
-	unsigned int	y;
 
 	i = 0;
-	y = -1;
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
@@ -79,7 +77,7 @@ void	input_check(int ac, char **av, t_feast *feast)
 {
 	t_input	*inputs;
 
-	inputs = &(feast->inputs);
+	inputs = feast->inputs;
 	if (check_1st_arg(av[1]))
 		inputs->no_of_philos = ft_atol(av[1]);
 	if (check_args(av[2]))

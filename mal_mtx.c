@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mal_mtx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:03:27 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 22:41:15 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:22:09 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdlib.h>
 
 void	*malloc_handle(size_t bytes)
 {
@@ -31,7 +32,7 @@ void	mutex_handle(t_mutex *mutex, t_op op)
 	else if (op == UNLOCK)
 		pthread_mutex_unlock(mutex);
 	else if (op == DESTROY)
-		pthread_mutex_destory(mutex);
+		pthread_mutex_destroy(mutex);
 }
 
 void	thread_handle(pthread_t *thread, void *(*f)(void *),

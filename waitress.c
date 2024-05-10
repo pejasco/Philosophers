@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   waitress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:14:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 23:29:28 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:29:50 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	*waitress_partoling(void *info)
 			i++;
 		}
 	}
+	return (NULL);
 }

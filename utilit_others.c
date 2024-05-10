@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilit_others.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 22:09:10 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:14:54 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,23 @@ int		ft_strlen(char *str)
 	return (len);
 }
 
-void	clean_all(t_feast *feast)
+void	super_clean(t_feast *feast)
 {
 	t_philo		*philo;
+	t_fork		*fork;
 	int			i;
 
 	i = 0;
 	while (i < feast->inputs->no_of_philos)
 	{
 		philo = feast->philos + i;
+		fork = feast->forks + i;
 		mutex_handle(&philo->philo_mutex, DESTROY);
+		mutex_handle(&fork->fork_mutex, DESTROY);
 		i++;
 	}
 	mutex_handle(&feast->msg_mutex, DESTROY);
-	mutex_handle(&feast->msg_mutex, DESTROY);
+	mutex_handle(&feast->feast_mutex, DESTROY);
 	free(feast->forks);
 	free(feast->philos);
 }

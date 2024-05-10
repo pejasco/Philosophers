@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:26 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 22:52:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:45:27 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	philos_taking_seat(t_feast *feast, t_philo *philos)
 		philo->eat_count = 0;
 		mutex_handle(&philo->philo_mutex, INIT);
 		philo->feast = feast;
-		whose_forks(philo, feast->forks, i);
+		whose_forks(philo, feast, i);
 		i++;
 	}
 }
@@ -73,5 +73,5 @@ void	feast_setup(t_feast *feast)
 		mutex_handle(&feast->forks[i].fork_mutex, INIT);
 		feast->forks[i].fork_id = i;
 	}
-	philos_taking_seat(feast, &feast->philos);
+	philos_taking_seat(feast, feast->philos);
 }

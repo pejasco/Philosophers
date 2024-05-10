@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sync.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:14:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 23:18:39 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:51:57 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	all_threads_running(t_mutex *mutex, long *total_running_threads,
 
 bool	sim_ended(t_feast *feast)
 {
-	return (get_bool(&feast->feast_mutex, &(feast->end_sim)));
+	return (read_bool(&feast->feast_mutex, &(feast->end_sim)));
 }
 
 void	avoid_having_two_stright_meal(t_feast *feast, t_philo *philo)
@@ -52,11 +52,11 @@ void	avoid_having_two_stright_meal(t_feast *feast, t_philo *philo)
 	if (parity == ODD)
 	{
 		if (philo->philo_id % 2)
-			thinking(philo, true);
+			fucking_think(philo, true);
 	}
 	else if (parity == EVEN)
 	{
 		if (!(philo->philo_id % 2))
-			fucking_sleep(4.2e4, feast);
+			sleep_well(4.2e4, feast);
 	}
 }

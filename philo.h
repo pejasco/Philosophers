@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/09 23:35:22 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:17:46 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ void		error_exit(const char *error);
 //utili_others
 t_parity	check_parity(int no_of_philos);
 int			ft_strlen(char *str);
-void		clean_all(t_feast *feast);
+void		super_clean(t_feast *feast);
 
 //waitress
 bool		if_philo_died(t_philo *philo, t_input *input);

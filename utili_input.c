@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utili_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:56:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 22:09:04 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:34:47 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 int		ft_isover_intmax(char *str)
 {
 	long	nbr;
-	int		res;
 
 	nbr = 0;
-	res = 0;
 	while (*str)
 		nbr = (nbr * 10) + (*(str++) - '0');
 	if (nbr > INT_MAX)
