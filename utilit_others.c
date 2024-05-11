@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilit_others.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:59:14 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:14:54 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:47:52 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h> //exit failure
 #include <stdbool.h> //bool
 
-t_parity	check_parity(int nbr)
+t_parity	check_parity(long nbr)
 {
 	if (nbr % 2 == 0)
 		return (EVEN);
@@ -42,7 +42,7 @@ void	super_clean(t_feast *feast)
 	int			i;
 
 	i = 0;
-	while (i < feast->inputs->no_of_philos)
+	while (i < feast->inputs.no_of_philos)
 	{
 		philo = feast->philos + i;
 		fork = feast->forks + i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sync.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:14:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:51:57 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:19:08 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,16 @@ bool	sim_ended(t_feast *feast)
 	return (read_bool(&feast->feast_mutex, &(feast->end_sim)));
 }
 
-void	avoid_having_two_stright_meal(t_feast *feast, t_philo *philo)
+void	avoid_having_two_stright_meal(t_philo *philo)
 {
-	t_parity	parity;
-
-	parity = feast->no_of_philos_parity;
-	if (parity == ODD)
+	if (philo->feast->inputs.no_of_philos % 2 == 0)
+	{
+		if (philo->philo_id % 2 == 0)
+			sleep_well(3e4, philo->feast);
+	}
+	else
 	{
 		if (philo->philo_id % 2)
 			fucking_think(philo, true);
-	}
-	else if (parity == EVEN)
-	{
-		if (!(philo->philo_id % 2))
-			sleep_well(4.2e4, feast);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 11:22:43 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:20:09 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:57:42 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	time_limit_check(t_input *inputs)
 
 void	input_check(int ac, char **av, t_feast *feast)
 {
-	t_input	*inputs;
+	t_input		*inputs;
 
-	inputs = feast->inputs;
+	inputs = &(feast->inputs);
 	if (check_1st_arg(av[1]))
 		inputs->no_of_philos = ft_atol(av[1]);
 	if (check_args(av[2]))

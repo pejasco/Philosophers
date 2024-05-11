@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   msg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:22:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:39:33 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:42:19 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	write_msg(t_status status, t_philo *philo)
 {
 	long	time_passed;
 
-	time_passed = time_since_epoch() - philo->feast->start_time;
+	time_passed = time_since_epoch(MILLIS) - philo->feast->start_time;
 	if (read_bool(&philo->philo_mutex, &philo->full))
 		return ;
 	mutex_handle(&philo->feast->msg_mutex, LOCK);

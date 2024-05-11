@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/09 17:28:17 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:53:21 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-long	time_since_epoch(void)
+long	time_since_epoch(t_time format)
 {
 	struct timeval		time;
-	long				milliseconds;
+	long				res;
 
+	res = -1;
 	gettimeofday(&time, NULL);
-	milliseconds = time.tv_sec * 1000L + time.tv_usec / 1000L; 
-	return (milliseconds);
+	if (format == MILLIS)
+		res = time.tv_sec * 1000L + time.tv_usec / 1000L;
+	else if (format == MICROS)
+		res = time.tv_sec * 1000000L + time.tv_usec;
+	return (res);
 }
 
-long	get_time_since(long start_time)
+long	get_time_since(long start_time, t_time format)
 {
 	long	current_time;
 
-	current_time = time_since_epoch();
+	current_time = time_since_epoch(format);
 	return (current_time - start_time);
 }
 
@@ -40,17 +44,17 @@ void		sleep_well(long sleep_usec, t_feast *feast)
 	long	time_passed;
 	long	diff;
 
-	start_time = time_since_epoch();
-	while (get_time_since(start_time) < sleep_usec)
+	start_time = time_since_epoch(MICROS);
+	while (get_time_since(start_time, MICROS) < sleep_usec)
 	{
 		if (sim_ended(feast))
 			break ;
-		time_passed = get_time_since(start_time);
+		time_passed = get_time_since(start_time, MICROS);
 		diff = sleep_usec - time_passed;
 		if (diff > 1e4)
 			usleep(diff/ 2);
 		else
-			while (time_since_epoch() - start_time < sleep_usec)
+			while (get_time_since(start_time, MICROS) < sleep_usec)
 				;
 	}
 }

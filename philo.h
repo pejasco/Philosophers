@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/10 01:17:46 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:36:21 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ typedef enum e_life
 	DEAD,
 } t_life;
 
+typedef enum e_time
+{
+	MILLIS,
+	MICROS,
+} t_time;
 
 typedef enum e_status
 {
@@ -118,7 +123,7 @@ typedef struct s_philo
 
 typedef struct s_feast
 {
-	t_input			*inputs;
+	t_input			inputs;
 	long			start_time;
 	bool			end_sim;
 	bool			all_threads_ready;
@@ -139,7 +144,7 @@ void		fucking_think(t_philo *philo, bool pre_sim);
 void		fucking_eat(t_philo *philo);
 
 //feast
-void		*lone_philo(void *arg);
+void		*one_philio(void *arg);
 void		*feast_sim(void *info);
 void		how_many_threads_needed(t_feast *feast);
 void		feast_start(t_feast *feast);
@@ -156,8 +161,8 @@ void		thread_handle(pthread_t *thread, void *(*f)(void *), void *feast, t_op op)
 void		write_msg(t_status status, t_philo *philo);
 
 //setup
-void		philos_taking_seat(t_feast *feast, t_philo *philos);
-void		whose_forks(t_philo *philo, t_feast *feast, long philo_post);
+void		philos_taking_seat(t_feast *feast);
+void		whose_forks(t_philo *philo, t_fork *forks, long philo_post);
 void		feast_setup(t_feast *feast);
 
 //sync
@@ -166,11 +171,11 @@ void		all_threads_created(t_feast *feast);
 bool		all_threads_running(t_mutex *mutex, long *total_running_threads,
 				long no_of_philos);
 bool		sim_ended(t_feast *feast);
-void		avoid_having_two_stright_meal(t_feast *feast, t_philo *philo);
+void		avoid_having_two_stright_meal(t_philo *philo);
 
 //time
-long		time_since_epoch(void);
-long		get_time_since(long start_time);
+long		time_since_epoch(t_time format);
+long		get_time_since(long start_time, t_time format);
 void		sleep_well(long sleep_usec, t_feast *feast);
 
 //utili_input
@@ -180,7 +185,7 @@ int			ft_isspace(int c);
 void		error_exit(const char *error);
 
 //utili_others
-t_parity	check_parity(int no_of_philos);
+t_parity	check_parity(long nbr);
 int			ft_strlen(char *str);
 void		super_clean(t_feast *feast);
 
