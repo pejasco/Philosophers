@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:26:40 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/11 14:48:15 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/11 22:50:11 by siev             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fucking_think(t_philo *philo, bool pre_sim)
 	time_to_think_ms = time_to_eat_ms * 2 - time_to_sleep_ms;
 	if (time_to_think_ms < 0)
 		time_to_think_ms = 0;
-	sleep_well(time_to_think_ms * 1000 * 0.42, philo->feast);
+	sleep_well(time_to_think_ms * 1000 * 0.38, philo->feast);
 }
 
 void	fucking_eat(t_philo *philo)

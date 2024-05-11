@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/11 14:36:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:36:33 by siev             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void		avoid_having_two_stright_meal(t_philo *philo);
 
 //time
 long		time_since_epoch(t_time format);
-long		get_time_since(long start_time, t_time format);
+//long		get_time_since(long start_time, t_time format);
 void		sleep_well(long sleep_usec, t_feast *feast);
 
 //utili_input
