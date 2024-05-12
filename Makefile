@@ -1,6 +1,6 @@
-NAME := philo_bonus
+NAME := philo
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -pthread -O3
+CFLAGS := -Wall -Wextra -Werror -pthread
 FILES := main.c \
 	actions.c \
 	atol.c \

@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   feast.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 23:31:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/11 22:51:27 by siev             ###   ########.fr       */
+/*   Updated: 2024/05/12 22:26:33 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-void	*one_philio(void *arg)
+void	*one_philio(t_feast *feast)
 {
-	t_philo *philo;
-
-	philo = (t_philo *)arg;
-	all_threads_created(philo->feast);
-	write_long(&philo->philo_mutex, &philo->last_meal_start_time,
-		time_since_epoch(MILLIS));
-	incr_long(&philo->feast->feast_mutex,
-		&philo->feast->threads_running_nbr);
-	write_msg(TAKE_1ST_FORK, philo);
-	while (!sim_ended(philo->feast))
-		sleep_well(200, philo->feast);
-	return (NULL);
+	printf("%-8s %s has taken a fork🍴🍴🍴\n",
+		"0", "1");
+	usleep(feast->inputs.time_to_die_ms * 1000);
+	printf("%-8ld %s died!!!!!!🪦😵💀\n", feast->inputs.time_to_die_ms, "1");
+	exit (1);
 }
 
 void	*feast_sim(void *info)
@@ -60,9 +56,6 @@ void	how_many_threads_needed(t_feast *feast)
 	no_of_philos = feast->inputs.no_of_philos;
 	if (feast->inputs.no_of_meals == 0)
 		return ;
-	else if (no_of_philos == 1)
-		thread_handle(&feast->philos[0].thread_id, one_philio,
-			&feast->philos[0], CREATE);
 	else
 	{
 		while (i < no_of_philos)
@@ -86,7 +79,7 @@ void	feast_start(t_feast *feast)
 	while (i < feast->inputs.no_of_philos)
 	{
 		thread_handle(&feast->philos[i].thread_id, NULL, NULL, JOIN);
-		i++;		
+		i++;
 	}
 	write_bool(&feast->feast_mutex, &feast->end_sim, true);
 	thread_handle(&feast->hot_waitress, NULL, NULL, JOIN);

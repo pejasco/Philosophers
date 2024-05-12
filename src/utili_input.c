@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utili_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:56:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:34:47 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:12:01 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h> //printf
 #include <stdlib.h> //exit failure
 
-int		ft_isover_intmax(char *str)
+int	ft_isover_intmax(char *str)
 {
 	long	nbr;
 
@@ -29,12 +29,12 @@ int		ft_isover_intmax(char *str)
 	return (0);
 }
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int		ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	return ((c >= '\t' && c <= '\r') || c == ' ');
 }

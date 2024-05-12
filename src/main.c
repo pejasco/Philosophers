@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:56 by siev              #+#    #+#             */
-/*   Updated: 2024/05/08 14:35:40 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:18:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	t_feast			feast;
 
 	if (ac != 5 && ac != 6)
-	{	
+	{
 		write(2, "Error - Invalid amount of arguments!!! 😪", 44);
 		return (1);
 	}

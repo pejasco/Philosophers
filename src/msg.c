@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   msg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:22:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/11 22:22:51 by siev             ###   ########.fr       */
+/*   Updated: 2024/05/12 20:17:58 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	write_msg(t_status status, t_philo *philo)
 	if (read_bool(&philo->philo_mutex, &philo->full))
 		return ;
 	mutex_handle(&philo->feast->msg_mutex, LOCK);
-	if ((status ==  TAKE_1ST_FORK|| status == TAKE_2ND_FORK)
+	if ((status == TAKE_1ST_FORK || status == TAKE_2ND_FORK)
 		&& !sim_ended(philo->feast))
 		printf("%-8ld %ld has taken a fork🍴🍴🍴\n",
 			time_passed, philo->philo_id);

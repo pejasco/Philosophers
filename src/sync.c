@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:14:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 15:19:08 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:27:16 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	incr_long(t_mutex *mutex, long *val)
 
 void	all_threads_created(t_feast *feast)
 {
-	while(!read_bool(&feast->feast_mutex,
-		&feast->all_threads_ready))
+	while (!read_bool(&feast->feast_mutex,
+			&feast->all_threads_ready))
 		;
 }
 
@@ -48,12 +48,12 @@ void	avoid_having_two_stright_meal(t_philo *philo)
 {
 	if (philo->feast->inputs.no_of_philos % 2 == 0)
 	{
-		if (philo->philo_id % 2 == 0)
+		if (philo->parity == EVEN)
 			sleep_well(3e4, philo->feast);
 	}
 	else
 	{
-		if (philo->philo_id % 2)
+		if (philo->parity == ODD)
 			fucking_think(philo, true);
 	}
 }

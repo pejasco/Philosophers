@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:14:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/11 14:40:59 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:12:34 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	if_philo_died(t_philo *philo, t_input *input)
 	if (read_bool(&(philo->philo_mutex), &philo->full))
 		return (false);
 	passed = time_since_epoch(MILLIS) - read_long(&(philo->philo_mutex),
-		&philo->last_meal_start_time);
+			&philo->last_meal_start_time);
 	time_to_die_ms = input->time_to_die_ms;
 	if (passed > time_to_die_ms)
 		return (true);
@@ -35,7 +35,7 @@ void	*waitress_partoling(void *info)
 
 	feast = (t_feast *)info;
 	while (!all_threads_running(&(feast->feast_mutex),
-		&feast->threads_running_nbr, feast->inputs.no_of_philos))
+			&feast->threads_running_nbr, feast->inputs.no_of_philos))
 		;
 	while (!sim_ended(feast))
 	{

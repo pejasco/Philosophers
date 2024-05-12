@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:27:48 by siev              #+#    #+#             */
-/*   Updated: 2024/05/11 16:36:33 by siev             ###   ########.fr       */
+/*   Updated: 2024/05/12 21:53:19 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@
 //protext the forks state with a mutex for each of them
 //
 
-typedef pthread_mutex_t	t_mutex;
-typedef struct s_feast t_feast;
+typedef pthread_mutex_t		t_mutex;
+typedef struct s_feast		t_feast;
 
 typedef enum e_handle_mod
 {
 	WRITE,
 	READ,
-} t_handle_mod;
+}	t_handle_mod;
 
-typedef	enum e_op
+typedef enum e_op
 {
 	INIT,
 	LOCK,
@@ -44,25 +44,25 @@ typedef	enum e_op
 	DESTROY,
 	CREATE,
 	JOIN,
-} t_op;
+}	t_op;
 
 typedef enum e_parity
 {
 	ODD,
 	EVEN,
-} t_parity;
+}	t_parity;
 
 typedef enum e_life
 {
 	ALIVE,
 	DEAD,
-} t_life;
+}	t_life;
 
 typedef enum e_time
 {
 	MILLIS,
 	MICROS,
-} t_time;
+}	t_time;
 
 typedef enum e_status
 {
@@ -72,7 +72,7 @@ typedef enum e_status
 	TAKE_1ST_FORK,
 	TAKE_2ND_FORK,
 	DIE,
-} t_status;
+}	t_status;
 
 typedef struct s_input
 {
@@ -82,7 +82,6 @@ typedef struct s_input
 	long	time_to_sleep_ms;
 	long	no_of_meals;
 }	t_input;
-
 
 /*
 typedef	struct	s_feast_data
@@ -144,7 +143,7 @@ void		fucking_think(t_philo *philo, bool pre_sim);
 void		fucking_eat(t_philo *philo);
 
 //feast
-void		*one_philio(void *arg);
+void		*one_philio(t_feast *feast);
 void		*feast_sim(void *info);
 void		how_many_threads_needed(t_feast *feast);
 void		feast_start(t_feast *feast);
@@ -155,7 +154,8 @@ void		input_check(int ac, char **av, t_feast *feast);
 //mal_mtx
 void		*malloc_handle(size_t bytes);
 void		mutex_handle(t_mutex *mutex, t_op op);
-void		thread_handle(pthread_t *thread, void *(*f)(void *), void *feast, t_op op);
+void		thread_handle(pthread_t *thread,
+				void *(*f)(void *), void *feast, t_op op);
 
 //msg
 void		write_msg(t_status status, t_philo *philo);
@@ -200,9 +200,6 @@ void		write_long(t_mutex *mutex, long *dst, long val);
 long		read_long(t_mutex *mutex, long *val);
 
 #endif
-
-
-
 
 /*
 typedef	struct	s_feast_data

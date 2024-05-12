@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 12:30:34 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/09 23:03:39 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:12:58 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	write_bool(t_mutex *mutex, bool *dst, bool val)
 
 bool	read_bool(t_mutex *mutex, bool *val)
 {
-	bool res;
+	bool	res;
 
 	mutex_handle(mutex, LOCK);
 	res = *val;
@@ -39,7 +39,7 @@ void	write_long(t_mutex *mutex, long *dst, long val)
 
 long	read_long(t_mutex *mutex, long *val)
 {
-	long res;
+	long	res;
 
 	mutex_handle(mutex, LOCK);
 	res = *val;

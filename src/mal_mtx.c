@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mal_mtx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:03:27 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 01:22:09 by Scofield         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:13:23 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	mutex_handle(t_mutex *mutex, t_op op)
 
 void	thread_handle(pthread_t *thread, void *(*f)(void *),
 	void *data, t_op op)
-{	
+{
 	if (op == CREATE)
 		pthread_create(thread, NULL, f, data);
 	else if (op == JOIN)

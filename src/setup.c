@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:26 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/10 18:34:28 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 21:18:59 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	philos_taking_seat(t_feast *feast)
 		philo->philo_id = i + 1;
 		philo->full = false;
 		philo->eat_count = 0;
+		philo->parity = check_parity(philo->philo_id);
 		mutex_handle(&philo->philo_mutex, INIT);
 		philo->feast = feast;
 		whose_forks(philo, feast->forks, i);
@@ -52,6 +53,8 @@ void	feast_setup(t_feast *feast)
 	int				i;
 
 	i = 0;
+	if (feast->inputs.no_of_philos == 1)
+		one_philio(feast);
 	no_of_philos = feast->inputs.no_of_philos;
 	feast->end_sim = false;
 	feast->all_threads_ready = false;

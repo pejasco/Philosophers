@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siev <siev@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:45:18 by siev              #+#    #+#             */
-/*   Updated: 2024/05/11 16:37:20 by siev             ###   ########.fr       */
+/*   Updated: 2024/05/12 20:11:36 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ long	get_time_since(long start_time, t_time format)
 	return (current_time - start_time);
 }
 
-void		sleep_well(long sleep_usec, t_feast *feast)
+void	sleep_well(long sleep_usec, t_feast *feast)
 {
 	long	start_time;
 	long	time_passed;
@@ -52,7 +52,7 @@ void		sleep_well(long sleep_usec, t_feast *feast)
 		time_passed = time_since_epoch(MICROS) - start_time;
 		diff = sleep_usec - time_passed;
 		if (diff > 1e4)
-			usleep(diff/ 2);
+			usleep(diff / 2);
 		else
 			while (time_since_epoch(MICROS) - start_time < sleep_usec)
 				;
