@@ -11,7 +11,10 @@ FILES := main.c \
 	setup.c \
 	sync.c \
 	time.c \
-	u
+	utili_input.c \
+	utili_others.c \
+	waitress.c \
+	write_n_read.c \
 
 INC_DIR := inc
 SRC_DIR := src
