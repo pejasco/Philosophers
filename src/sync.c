@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:14:32 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/12 20:27:16 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/13 00:15:13 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	sim_ended(t_feast *feast)
 
 void	avoid_having_two_stright_meal(t_philo *philo)
 {
-	if (philo->feast->inputs.no_of_philos % 2 == 0)
+	if (philo->feast->no_of_philos_parity == EVEN)
 	{
 		if (philo->parity == EVEN)
 			sleep_well(3e4, philo->feast);
