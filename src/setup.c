@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:26 by chuleung          #+#    #+#             */
-/*   Updated: 2024/05/12 21:18:59 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:12:27 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	feast_setup(t_feast *feast)
 	feast->end_sim = false;
 	feast->all_threads_ready = false;
 	feast->threads_running_nbr = 0;
+	feast->no_of_philos_parity = check_parity(no_of_philos);
 	feast->philos = malloc_handle(sizeof(t_philo) * no_of_philos);
 	feast->forks = malloc_handle(sizeof(t_fork) * no_of_philos);
 	mutex_handle(&(feast->msg_mutex), INIT);
