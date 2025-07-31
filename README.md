@@ -21,7 +21,7 @@ The Dining Philosophers problem illustrates synchronization issues and solutions
 
 <h2 id="about"> 🤔 What is the Dining Philosopher problem?</h2>
 <p>
-<img src="Dining_philosophers_diagram.jpg" width="80%" alt="diagram" /><br>
+<img src="png/diagram.png" width="80%" alt="diagram" /><br>
 </p>
 <p>
 The Dining Philosophers problem is a classic synchronization puzzle that demonstrates how several philosophers (for example, 5 philosophers) sit at a table with the same number of forks (5 forks). Each philosopher needs two forks to eat, but there is only one fork between each pair of philosophers. The challenge is to design a system where philosophers can eat without causing deadlock or starvation.<br>
