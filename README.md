@@ -68,10 +68,10 @@ After compilation, run the program with the following syntax:
 
 <h3>🧪 Checking for Thread Errors with Helgrind</h3>
 <p>
-You can use <strong>Helgrind</strong> (a Valgrind tool) to check your program for data races and synchronization errors in multithreaded code. Helgrind analyzes your program as it runs and reports any potential issues with thread safety, such as two threads accessing shared data at the same time without proper locking.
+You can use <strong>Helgrind</strong> (a Valgrind tool) to check the program for data races and synchronization errors in multithreaded code. Helgrind analyzes the program as it runs and reports any potential issues with thread safety, such as two threads accessing shared data at the same time without proper locking.
 </p>
 <p>
-To run your program with Helgrind, use:
+To run the program with Helgrind, use:
 </p>
 <pre><code class="bash">
 valgrind --tool=helgrind ./philo 5 800 200 200 7
