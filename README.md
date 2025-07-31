@@ -77,7 +77,7 @@ To run your program with Helgrind, use:
 valgrind --tool=helgrind ./philo 5 800 200 200 7
 </code></pre>
 <p>
-Below is an example screenshot of Helgrind in action:
+Below is example screenshots of Helgrind in action:
 </p>
 <p>
 <img src="png/helgrind1.png" width="80%" alt="Helgrind1" /><br>
