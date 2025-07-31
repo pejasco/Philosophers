@@ -35,7 +35,7 @@ make
 </code></pre>
 
 <p>
-<em>Running <code>make</code> to compile the pph</em>
+<em>Running <code>make</code> to compile the executable</em>
 </p>
 
 <h2 id="about">👨‍💻 Execution</h2>
