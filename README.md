@@ -87,5 +87,5 @@ Below is an example screenshot of Helgrind in action:
 <hr/>
 
 <p>
-<b>Note:</b> If you run the program with arguments that prevent any philosopher from dying (for example, all philosophers eat enough times), the program may not terminate by itself. In such cases, stopping the program manually with <code>Ctrl+C</code> is normal. This may cause Helgrind or Valgrind to report an error due to the abrupt termination—this is expected and not a problem with your code.
+<b>Note:</b> If you run the program with arguments that prevent any philosopher from dying (for example, all philosophers eat enough times), the program may not terminate by itself. In such cases, stopping the program manually with <code>Ctrl+C</code> may cause Helgrind to report an error due to the abrupt termination. This is expected and not a problem with the code.
 </p>
